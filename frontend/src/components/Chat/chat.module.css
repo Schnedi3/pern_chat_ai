@@ -1,0 +1,99 @@
+/* CHAT */
+.chat {
+  height: calc(100vh - var(--nav-height));
+  position: relative;
+  padding: 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: var(--main-bg);
+}
+
+/* user bubble */
+.userBubble {
+  width: fit-content;
+  padding: 1rem;
+  color: var(--main-text);
+  border-radius: var(--border-radius);
+  border-bottom-left-radius: 0;
+  background-color: var(--user-bubble);
+}
+
+/* ai bubble */
+.aiBubble {
+  width: fit-content;
+  padding: 1rem;
+  align-self: flex-end;
+  color: var(--main-text);
+  border-radius: var(--border-radius);
+  border-bottom-right-radius: 0;
+  background-color: var(--ai-bubble);
+}
+
+/* form */
+.form {
+  position: absolute;
+  bottom: 5%;
+  width: 80%;
+  display: flex;
+  gap: 1rem;
+  align-self: center;
+}
+
+.input {
+  width: 100%;
+  padding: 1rem;
+  color: var(--main-text);
+  border: 0.1rem solid var(--border);
+  border-radius: var(--border-radius);
+}
+
+.input:focus-visible {
+  border: 0.1rem solid var(--accent);
+}
+
+.label {
+  position: absolute;
+  top: 0.1rem;
+  left: 1rem;
+  color: var(--secondary-text);
+  opacity: 0.6;
+  transform: translateY(1rem);
+  transition-duration: 0.3s;
+}
+
+.input:focus + .label,
+.input:not(:placeholder-shown) + .label {
+  padding: 0 0.5rem;
+  font-size: 0.8rem;
+  opacity: 1;
+  background-color: var(--main-bg);
+  transform: translateY(-0.65rem);
+}
+
+.submitButton {
+  padding: 0 0.9rem;
+  display: flex;
+  align-items: center;
+  border: 0.1rem solid var(--border);
+  border-radius: 50%;
+}
+
+.submitButton > svg {
+  color: var(--secondary-text);
+  width: 1.6rem;
+  stroke-width: 3px;
+}
+
+/* HOVER */
+.submitButton:hover {
+  border: 0.1rem solid var(--accent-light);
+  cursor: pointer;
+}
+
+/*  ADAPTIVE */
+@media (max-width: 700px) {
+  .chat {
+    padding: 2rem 1rem;
+  }
+}
