@@ -42,6 +42,66 @@ ul {
   list-style: none;
 }
 
+/* FONTS */
+@font-face {
+  font-family: Logotype;
+  src: url(./assets/fonts/Logotype.otf) format(opentype);
+}
+
+@font-face {
+  font-family: NotoSansMono;
+  src: url(./assets/fonts/NotoSansMono.ttf) format(truetype);
+}
+
+@font-face {
+  font-family: Poppins;
+  src: url(./assets/fonts/Poppins.ttf) format(truetype);
+}
+
+/* VARIABLES */
+.theme-light {
+  /* background */
+  --main-bg: #fafafa;
+  --nav-bg: #ededed;
+  --active-bg: #a5f3fc;
+  --border: #d4d4d8;
+  --user-bubble: #e4e4e7;
+  --ai-bubble: #84fcd6;
+
+  /* text */
+  --main-text: #27272a;
+  --secondary-text: #71717a;
+
+  /* accent */
+  --accent: #6d39ae;
+  --accent-light: #c084fc;
+  --gradient: linear-gradient(to right, #0066ff, #ea9078);
+}
+
+.theme-dark {
+  /* background */
+  --main-bg: #192023;
+  --nav-bg: #1f272b;
+  --active-bg: #2d393e;
+  --border: #2d393e;
+  --user-bubble: #2d393e;
+  --ai-bubble: #6b21a8;
+
+  /* text */
+  --main-text: #f9fafb;
+  --secondary-text: #9ca3af;
+
+  /* accent */
+  --accent: #6d39ae;
+  --accent-light: #c084fc;
+  --gradient: linear-gradient(to right, #12e9e9, #cc3bbd);
+}
+
+:root {
+  --border-radius: 0.8rem;
+  --nav-height: 5rem;
+}
+
 /* GLOBALS */
 * {
   transition: 0.5s;
@@ -49,6 +109,9 @@ ul {
 
 body {
   min-height: 100vh;
+  font: 0.9rem Poppins;
+  color: var(--secondary-text);
+  background-color: var(--main-bg);
   animation: fade-In 0.5s linear;
 }
 
