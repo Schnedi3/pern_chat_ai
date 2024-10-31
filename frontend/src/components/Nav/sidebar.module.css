@@ -1,0 +1,84 @@
+/* SIDEBAR */
+.archive {
+  width: 20rem;
+  height: calc(100vh - var(--nav-height));
+  position: absolute;
+  top: var(--nav-height);
+  left: 0;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  border-right: 0.1rem solid var(--border);
+  background-color: var(--nav-bg);
+  z-index: 1;
+  clip-path: inset(0 100% 0 0);
+  transition: 0.7s;
+}
+
+.visibleArchive {
+  clip-path: inset(0 0 0 0);
+}
+
+.closeSidebarButton {
+  width: fit-content;
+  padding: 0.4rem 0.6rem;
+  display: flex;
+  align-items: center;
+  border: 0.1rem solid var(--border);
+  border-radius: var(--border-radius);
+}
+
+.closeSidebarIcon {
+  color: var(--main-text);
+  width: 1.2rem;
+  stroke-width: 2px;
+}
+
+.chatList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.title {
+  color: var(--accent-light);
+  opacity: 0.5;
+}
+
+.conversation {
+  padding: 0.5em 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.summary {
+  width: 80%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.deleteChatIcon {
+  width: 1.6rem;
+  stroke-width: 2px;
+  opacity: 0.3;
+}
+
+/* HOVER */
+.closeSidebarButton:hover {
+  border: 0.1rem solid var(--accent-light);
+  cursor: pointer;
+}
+
+.summary:hover {
+  color: var(--main-text);
+  cursor: pointer;
+}
+
+.deleteChatIcon:hover {
+  color: var(--accent-light);
+  opacity: 1;
+  cursor: pointer;
+}

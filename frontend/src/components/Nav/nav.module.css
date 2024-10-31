@@ -1,0 +1,54 @@
+/* NAV */
+.nav {
+  height: var(--nav-height);
+  padding: 0 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 0.1rem solid var(--border);
+}
+
+/* TITLE */
+.title {
+  font-family: Logotype;
+  font-size: 2.8rem;
+  text-align: center;
+  text-transform: uppercase;
+  background: var(--gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* WIDGETS */
+.widgets {
+  display: flex;
+  gap: 1rem;
+}
+
+.widgets > button {
+  padding: 0.4rem 0.7rem;
+  display: flex;
+  align-items: center;
+  border: 0.1rem solid var(--border);
+  border-radius: var(--border-radius);
+}
+
+.widgets > button > svg {
+  color: var(--secondary-text);
+  width: 1.3rem;
+  stroke-width: 2px;
+}
+
+/* HOVER */
+.widgets > button:hover {
+  border: 0.1rem solid var(--accent-light);
+  cursor: pointer;
+}
+
+/* ADAPTIVE */
+@media (max-width: 700px) {
+  .nav {
+    padding: 0 1rem;
+  }
+}

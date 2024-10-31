@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+import { Home } from "./Pages/Home";
 import "./main.css";
 
 const queryClient = new QueryClient({
@@ -11,5 +12,9 @@ const queryClient = new QueryClient({
 });
 
 export const App = () => {
-  return <QueryClientProvider client={queryClient}></QueryClientProvider>;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Home />
+    </QueryClientProvider>
+  );
 };
