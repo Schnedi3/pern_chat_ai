@@ -1,6 +1,8 @@
 import { Cancel01Icon, Delete02Icon } from "hugeicons-react";
 
 import { useChatStore } from "../../store/chatStore";
+import { useGetOldChats } from "../../api/chat";
+import { IOldChat } from "../../types/types";
 import style from "./sidebar.module.css";
 
 interface IArchiveProp {
@@ -10,8 +12,9 @@ interface IArchiveProp {
 
 export const Sidebar = ({ viewSidebar, setViewSidebar }: IArchiveProp) => {
   const { chat } = useChatStore();
-  // todo: replace with old chats
-  const oldConversations = Array.from({ length: 4 });
+  const { data: oldChats } = useGetOldChats();
+
+  console.log(oldChats)
 
   return (
     <section
@@ -36,11 +39,9 @@ export const Sidebar = ({ viewSidebar, setViewSidebar }: IArchiveProp) => {
 
       <ul className={style.chatList}>
         <h4 className={style.title}>Old chats</h4>
-        {oldConversations.map((_, index) => (
-          <li className={style.conversation} key={index}>
-            <p className={style.summary}>
-              This is a test of the previous chats length
-            </p>
+        {oldChats.map((oldChat: IOldChat) => (
+          <li className={style.conversation} key={oldChat.id}>
+            <p className={style.summary}>{oldChat.conversation[0].content}</p>
             <Delete02Icon className={style.deleteChatIcon} />
           </li>
         ))}

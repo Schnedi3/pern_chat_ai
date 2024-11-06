@@ -10,3 +10,8 @@ export interface IChatStore {
   chatId: number;
   setChatId: (chatId: number) => void;
 }
+
+export interface IOldChat {
+  id: number;
+  conversation: IMessage[];
+}

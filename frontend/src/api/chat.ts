@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 import customAxios from "./axios";
 import { IMessage } from "../types/types";
@@ -30,5 +30,16 @@ export const useCallAi = () => {
     mutationFn: (content: string) => {
       return customAxios.post("/chat/ai", { content });
     },
+  });
+};
+
+export const useGetOldChats = () => {
+  return useQuery({
+    queryKey: ["oldChats"],
+    queryFn: async () => {
+      const { data } = await customAxios.get("/chat");
+      return data;
+    },
+    initialData: [],
   });
 };
