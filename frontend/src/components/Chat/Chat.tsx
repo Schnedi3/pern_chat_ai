@@ -10,6 +10,7 @@ export const Chat = () => {
   const { mutate: addMessage } = useAddMessage();
   const { chat, setChat } = useChatStore();
   const { mutate: callAi } = useCallAi();
+  const { chatId } = useChatStore();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

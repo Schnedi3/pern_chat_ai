@@ -7,4 +7,6 @@ export interface IMessage {
 export interface IChatStore {
   chat: IMessage[];
   setChat: (chat: IMessage[]) => void;
+  chatId: number;
+  setChatId: (chatId: number) => void;
 }
