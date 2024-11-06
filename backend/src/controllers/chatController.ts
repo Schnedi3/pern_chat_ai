@@ -1,11 +1,23 @@
 import { Request, Response } from "express";
 import { openai } from "../index";
 
-import { createChatDB } from "../database/chatDB";
+import { addMessageDB, createChatDB } from "../database/chatDB";
 
 export const createChat = async (req: Request, res: Response) => {
   try {
     const result = await createChatDB();
+
+    res.json(result);
+  } catch (error: any) {
+    res.status(500).json(error.message);
+  }
+};
+
+export const addMessage = async (req: Request, res: Response) => {
+  const { chatId, role, content } = req.body;
+
+  try {
+    const result = await addMessageDB(chatId, role, content);
 
     res.json(result);
   } catch (error: any) {
