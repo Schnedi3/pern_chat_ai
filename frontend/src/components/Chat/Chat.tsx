@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ArrowUp02Icon } from "hugeicons-react";
 
-import { useAddMessage } from "../../api/chat";
+import { useAddMessage, useCallAi } from "../../api/chat";
 import { useChatStore } from "../../store/chatStore";
 import style from "./chat.module.css";
 
@@ -9,6 +9,7 @@ export const Chat = () => {
   const [input, setInput] = useState<string>("");
   const { mutate: addMessage } = useAddMessage();
   const { chat, setChat } = useChatStore();
+  const { mutate: callAi } = useCallAi();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -21,6 +22,8 @@ export const Chat = () => {
     if (chatId) {
       addMessage({ chatId, role, content });
     }
+
+    callAi(content);
   };
 
   return (

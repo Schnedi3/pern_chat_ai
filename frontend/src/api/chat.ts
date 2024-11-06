@@ -18,3 +18,11 @@ export const useAddMessage = () => {
     },
   });
 };
+
+export const useCallAi = () => {
+  return useMutation({
+    mutationFn: (content: string) => {
+      return customAxios.post("/chat/ai", { content });
+    },
+  });
+};
