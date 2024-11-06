@@ -24,13 +24,27 @@ export const Chat = () => {
       addMessage({ chatId, role, content });
     }
 
-    callAi(content);
+    callAi(content, {
+      onSuccess: ({ data }) => {
+        setChat([
+          ...chat,
+          { role, content },
+          { role: data.role, content: data.content },
+        ]);
+        addMessage({ chatId, role: data.role, content: data.content });
+      },
+    });
   };
 
   return (
     <section className={style.chat}>
       {chat.map((message, index) => (
-        <div className={style.userBubble} key={index}>
+        <div
+          className={
+            message.role === "user" ? style.userBubble : style.aiBubble
+          }
+          key={index}
+        >
           <p>{message.content}</p>
         </div>
       ))}
