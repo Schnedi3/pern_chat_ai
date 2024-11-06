@@ -1,6 +1,18 @@
 import { Request, Response } from "express";
 import { openai } from "../index";
 
+import { createChatDB } from "../database/chatDB";
+
+export const createChat = async (req: Request, res: Response) => {
+  try {
+    const result = await createChatDB();
+
+    res.json(result);
+  } catch (error: any) {
+    res.status(500).json(error.message);
+  }
+};
+
 export const callAi = async (req: Request, res: Response) => {
   const { content } = req.body;
 

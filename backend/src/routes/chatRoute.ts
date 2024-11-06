@@ -1,9 +1,10 @@
 import { Router } from "express";
 
-import { callAi } from "../controllers/chatController";
+import { callAi, createChat } from "../controllers/chatController";
 
 const router = Router();
 
+router.post("/", createChat);
 router.post("/ai", callAi);
 
 export default router;
