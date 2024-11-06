@@ -6,6 +6,8 @@ import {
   Sun02Icon,
 } from "hugeicons-react";
 
+import { useCreateChat } from "../../api/chat";
+import { useChatStore } from "../../store/chatStore";
 import { useTheme } from "../../hooks/useTheme";
 import { Sidebar } from "./Sidebar";
 import style from "./nav.module.css";
@@ -13,6 +15,13 @@ import style from "./nav.module.css";
 export const Nav = () => {
   const [viewSidebar, setViewSidebar] = useState<boolean>(false);
   const { theme, setTheme } = useTheme();
+  const { mutate: createChat } = useCreateChat();
+  const { setChat } = useChatStore();
+
+  const handleClick = () => {
+    createChat();
+    setChat([]);
+  };
 
   const toggleTheme = () => {
     setTheme(theme === "theme-light" ? "theme-dark" : "theme-light");
@@ -22,7 +31,7 @@ export const Nav = () => {
     <section className={style.nav}>
       <h1 className={style.title}>reachat</h1>
       <div className={style.widgets}>
-        <button>
+        <button onClick={handleClick}>
           <BubbleChatIcon />
         </button>
 
