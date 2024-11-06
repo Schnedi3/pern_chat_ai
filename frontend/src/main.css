@@ -103,10 +103,6 @@ ul {
 }
 
 /* GLOBALS */
-* {
-  transition: 0.5s;
-}
-
 body {
   min-height: 100vh;
   font: 0.9rem Poppins;

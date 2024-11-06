@@ -10,7 +10,7 @@ export const Chat = () => {
   return (
     <section className={style.chat}>
       <div className={style.userBubble}>
-        <p>This is a test of how will user bubble will look</p>
+        <p>This is a test of how user bubble looks</p>
       </div>
 
       <form className={style.form} onSubmit={handleSubmit} autoComplete="off">
