@@ -23,3 +23,26 @@ export const addMessageDB = async (
   const result = await pool.query(addMessageQuery, [id, role, content]);
   return result.rows[0];
 };
+
+export const getOldChatsDB = async () => {
+  const getOldChatsQuery = `
+    SELECT
+      c.id AS "id",
+      json_agg(
+        jsonb_build_object(
+          'role', m."role",
+          'content', m.message
+        ) ORDER BY m.created_at
+      ) AS conversation
+    FROM
+      chat c
+    JOIN
+      messages m ON c.id = m.chat_id
+    GROUP BY
+      c.id
+    ORDER BY
+      c.created_at`;
+
+  const result = await pool.query(getOldChatsQuery);
+  return result.rows;
+};
