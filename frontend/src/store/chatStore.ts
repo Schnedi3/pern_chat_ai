@@ -7,4 +7,6 @@ export const useChatStore = create<IChatStore>((set) => ({
   setChat: (data) => set(() => ({ chat: data })),
   chatId: 0,
   setChatId: (id) => set(() => ({ chatId: id })),
+  viewSidebar: false,
+  setViewSidebar: () => set((state) => ({ viewSidebar: !state.viewSidebar })),
 }));

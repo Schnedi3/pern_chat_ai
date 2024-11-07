@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   BubbleChatIcon,
   Menu03Icon,
@@ -9,14 +8,12 @@ import {
 import { useCreateChat } from "../../api/chat";
 import { useChatStore } from "../../store/chatStore";
 import { useTheme } from "../../hooks/useTheme";
-import { Sidebar } from "./Sidebar";
 import style from "./nav.module.css";
 
 export const Nav = () => {
-  const [viewSidebar, setViewSidebar] = useState<boolean>(false);
   const { theme, setTheme } = useTheme();
   const { mutate: createChat } = useCreateChat();
-  const { setChat } = useChatStore();
+  const { setChat, setViewSidebar } = useChatStore();
 
   const handleClick = () => {
     createChat();
@@ -39,12 +36,10 @@ export const Nav = () => {
           {theme === "theme-light" ? <Moon02Icon /> : <Sun02Icon />}
         </button>
 
-        <button onClick={() => setViewSidebar(true)}>
+        <button onClick={() => setViewSidebar()}>
           <Menu03Icon />
         </button>
       </div>
-
-      <Sidebar viewSidebar={viewSidebar} setViewSidebar={setViewSidebar} />
     </section>
   );
 };

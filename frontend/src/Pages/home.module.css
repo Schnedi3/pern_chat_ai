@@ -1,0 +1,33 @@
+/* HOME */
+.home {
+  margin-left: 0;
+  transition: 0.7s;
+}
+
+.homeSmall {
+  margin-left: var(--sidebar-width);
+}
+
+.backdrop {
+  width: calc(100vw - var(--sidebar-width));
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.001);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+}
+
+.backdropVisible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ADAPTIVE */
+@media (max-width: 700px) {
+  .homeSmall {
+    margin-left: 0;
+  }
+}

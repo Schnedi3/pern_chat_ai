@@ -5,13 +5,8 @@ import { useGetOldChats } from "../../api/chat";
 import { IOldChat } from "../../types/types";
 import style from "./sidebar.module.css";
 
-interface IArchiveProp {
-  viewSidebar: boolean;
-  setViewSidebar: (viewSidebar: boolean) => void;
-}
-
-export const Sidebar = ({ viewSidebar, setViewSidebar }: IArchiveProp) => {
-  const { chat } = useChatStore();
+export const Sidebar = () => {
+  const { chat, viewSidebar, setViewSidebar } = useChatStore();
   const { data: oldChats } = useGetOldChats();
 
   console.log(oldChats)
@@ -22,7 +17,7 @@ export const Sidebar = ({ viewSidebar, setViewSidebar }: IArchiveProp) => {
     >
       <button
         className={style.closeSidebarButton}
-        onClick={() => setViewSidebar(false)}
+        onClick={() => setViewSidebar()}
       >
         <Cancel01Icon className={style.closeSidebarIcon} />
       </button>

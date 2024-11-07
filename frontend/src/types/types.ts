@@ -9,6 +9,8 @@ export interface IChatStore {
   setChat: (chat: IMessage[]) => void;
   chatId: number;
   setChatId: (chatId: number) => void;
+  viewSidebar: boolean;
+  setViewSidebar: () => void;
 }
 
 export interface IOldChat {
