@@ -46,3 +46,12 @@ export const getOldChatsDB = async () => {
   const result = await pool.query(getOldChatsQuery);
   return result.rows;
 };
+
+export const deleteChatDB = async (id: number) => {
+  const deleteQuery = `
+    DELETE FROM chat
+    WHERE id = $1`;
+
+  const result = await pool.query(deleteQuery, [id]);
+  return result.rows[0];
+};

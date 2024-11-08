@@ -1,7 +1,12 @@
 import { Request, Response } from "express";
 import { openai } from "../index";
 
-import { addMessageDB, createChatDB, getOldChatsDB } from "../database/chatDB";
+import {
+  addMessageDB,
+  createChatDB,
+  deleteChatDB,
+  getOldChatsDB,
+} from "../database/chatDB";
 
 export const createChat = async (req: Request, res: Response) => {
   try {
@@ -48,6 +53,18 @@ export const callAi = async (req: Request, res: Response) => {
 export const getOldChats = async (req: Request, res: Response) => {
   try {
     const result = await getOldChatsDB();
+
+    res.json(result);
+  } catch (error: any) {
+    res.status(500).json(error.message);
+  }
+};
+
+export const deleteChat = async (req: Request, res: Response) => {
+  const id = Number(req.params.id);
+
+  try {
+    const result = await deleteChatDB(id);
 
     res.json(result);
   } catch (error: any) {
