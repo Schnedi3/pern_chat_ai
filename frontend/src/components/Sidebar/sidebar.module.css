@@ -29,7 +29,7 @@
 }
 
 .closeSidebarIcon {
-  color: var(--main-text);
+  color: var(--secondary-text);
   width: 1.2rem;
   stroke-width: 2px;
 }
@@ -60,8 +60,9 @@
 }
 
 .deleteChatIcon {
-  width: 1.4rem;
+  width: 1.3rem;
   stroke-width: 2px;
+  color: var(--main-text);
   opacity: 0.3;
 }
 

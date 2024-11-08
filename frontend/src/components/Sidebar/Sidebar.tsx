@@ -6,9 +6,19 @@ import { IOldChat } from "../../types/types";
 import style from "./sidebar.module.css";
 
 export const Sidebar = () => {
-  const { chat, viewSidebar, setViewSidebar } = useChatStore();
+  const { chat, setChat, chatId, setChatId, viewSidebar, setViewSidebar } =
+    useChatStore();
   const { data: oldChats } = useGetOldChats();
   const { mutate: deleteChat } = useDeleteChat();
+
+  const handleSetChat = (oldChat: IOldChat) => {
+    setChat(oldChat.conversation);
+    setChatId(oldChat.id);
+  };
+
+  const filteredOldChats = oldChats.filter(
+    (oldChat: IOldChat) => oldChat.id !== chatId
+  );
 
   return (
     <section
@@ -33,8 +43,12 @@ export const Sidebar = () => {
 
       <ul className={style.chatList}>
         <h4 className={style.title}>Old chats</h4>
-        {oldChats.map((oldChat: IOldChat) => (
-          <li className={style.conversation} key={oldChat.id}>
+        {filteredOldChats.map((oldChat: IOldChat) => (
+          <li
+            className={style.conversation}
+            key={oldChat.id}
+            onClick={() => handleSetChat(oldChat)}
+          >
             <p className={style.summary}>{oldChat.conversation[0].content}</p>
             <button onClick={() => deleteChat(oldChat.id)}>
               <Delete02Icon className={style.deleteChatIcon} />
