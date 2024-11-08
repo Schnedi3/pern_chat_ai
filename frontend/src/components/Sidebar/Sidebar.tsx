@@ -1,15 +1,14 @@
 import { Cancel01Icon, Delete02Icon } from "hugeicons-react";
 
 import { useChatStore } from "../../store/chatStore";
-import { useGetOldChats } from "../../api/chat";
+import { useDeleteChat, useGetOldChats } from "../../api/chat";
 import { IOldChat } from "../../types/types";
 import style from "./sidebar.module.css";
 
 export const Sidebar = () => {
   const { chat, viewSidebar, setViewSidebar } = useChatStore();
   const { data: oldChats } = useGetOldChats();
-
-  console.log(oldChats)
+  const { mutate: deleteChat } = useDeleteChat();
 
   return (
     <section
@@ -37,7 +36,9 @@ export const Sidebar = () => {
         {oldChats.map((oldChat: IOldChat) => (
           <li className={style.conversation} key={oldChat.id}>
             <p className={style.summary}>{oldChat.conversation[0].content}</p>
-            <Delete02Icon className={style.deleteChatIcon} />
+            <button onClick={() => deleteChat(oldChat.id)}>
+              <Delete02Icon className={style.deleteChatIcon} />
+            </button>
           </li>
         ))}
       </ul>

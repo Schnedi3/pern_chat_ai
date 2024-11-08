@@ -43,3 +43,11 @@ export const useGetOldChats = () => {
     initialData: [],
   });
 };
+
+export const useDeleteChat = () => {
+  return useMutation({
+    mutationFn: (id: number) => {
+      return customAxios.delete(`/chat/${id}`);
+    },
+  });
+};
