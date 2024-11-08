@@ -9,4 +9,6 @@ export const useChatStore = create<IChatStore>((set) => ({
   setChatId: (id) => set(() => ({ chatId: id })),
   viewSidebar: false,
   setViewSidebar: () => set((state) => ({ viewSidebar: !state.viewSidebar })),
+  input: "",
+  setInput: (inpt) => set(() => ({ input: inpt })),
 }));

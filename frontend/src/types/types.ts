@@ -11,6 +11,8 @@ export interface IChatStore {
   setChatId: (chatId: number) => void;
   viewSidebar: boolean;
   setViewSidebar: () => void;
+  input: string;
+  setInput: (input: string) => void;
 }
 
 export interface IOldChat {

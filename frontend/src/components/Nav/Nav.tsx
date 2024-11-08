@@ -13,7 +13,7 @@ import style from "./nav.module.css";
 export const Nav = () => {
   const { theme, setTheme } = useTheme();
   const { mutate: createChat } = useCreateChat();
-  const { setChat, setViewSidebar } = useChatStore();
+  const { setChat, viewSidebar, setViewSidebar } = useChatStore();
 
   const handleClick = () => {
     createChat();
@@ -25,7 +25,7 @@ export const Nav = () => {
   };
 
   return (
-    <section className={style.nav}>
+    <section className={`${style.nav} ${viewSidebar ? style.navSmall : ""}`}>
       <h1 className={style.title}>reachat</h1>
       <div className={style.widgets}>
         <button onClick={handleClick}>

@@ -1,11 +1,19 @@
 /* NAV */
 .nav {
   height: var(--nav-height);
+  position: absolute;
+  width: 100%;
+  margin-left: 0;
   padding: 0 3rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 0.1rem solid var(--border);
+  transition: 0.7s;
+}
+
+.navSmall {
+  width: calc(100% - var(--sidebar-width));
 }
 
 /* TITLE */

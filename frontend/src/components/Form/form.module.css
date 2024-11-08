@@ -1,0 +1,89 @@
+/* FORM */
+.formContainer {
+  width: 100%;
+  height: var(--nav-height);
+  position: fixed;
+  bottom: 2rem;
+  padding-top: 2rem;
+  border-top: 0.1rem solid var(--border);
+  transition: 0.7s;
+}
+
+.formContainerSmall {
+  width: calc(100% - var(--sidebar-width));
+}
+
+.form {
+  position: relative;
+  width: 60%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.input {
+  width: 100%;
+  padding: 1rem;
+  color: var(--main-text);
+  border: 0.1rem solid var(--border);
+  border-radius: var(--border-radius);
+}
+
+.input:focus-visible {
+  border: 0.1rem solid var(--accent-light);
+}
+
+.label {
+  position: absolute;
+  top: 0.1rem;
+  left: 1rem;
+  color: var(--secondary-text);
+  opacity: 0.6;
+  transform: translateY(1rem);
+  transition-duration: 0.3s;
+}
+
+.input:focus + .label,
+.input:not(:placeholder-shown) + .label {
+  padding: 0 0.5rem;
+  font-size: 0.8rem;
+  opacity: 1;
+  background-color: var(--main-bg);
+  transform: translateY(-0.65rem);
+}
+
+.submitButton {
+  width: 4.1rem;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.1rem solid var(--border);
+  border-radius: 50%;
+}
+
+.submitButton > svg {
+  color: var(--secondary-text);
+  width: 1.5rem;
+  stroke-width: 3px;
+}
+
+/* HOVER */
+.submitButton:hover {
+  border: 0.1rem solid var(--accent-light);
+  cursor: pointer;
+}
+
+/* ADAPTIVE */
+@media (max-width: 1200px) {
+  .form {
+    width: 80%;
+  }
+}
+
+@media (max-width: 700px) {
+  .form {
+    width: 90%;
+  }
+}

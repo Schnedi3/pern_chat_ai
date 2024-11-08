@@ -1,8 +1,9 @@
-import { Nav } from "../components/Nav/Nav";
-import { Chat } from "../components/Chat/Chat";
-import { Welcome } from "../components/Welcome/Welcome";
 import { useChatStore } from "../store/chatStore";
 import { Sidebar } from "../components/Sidebar/Sidebar";
+import { Nav } from "../components/Nav/Nav";
+import { Welcome } from "../components/Welcome/Welcome";
+import { Chat } from "../components/Chat/Chat";
+import { Form } from "../components/Form/Form";
 import style from "./home.module.css";
 
 export const Home = () => {
@@ -12,7 +13,14 @@ export const Home = () => {
     <main className={`${style.home} ${viewSidebar ? style.homeSmall : ""}`}>
       <Sidebar />
       <Nav />
-      {chatId ? <Chat /> : <Welcome />}
+      {chatId ? (
+        <>
+          <Chat />
+          <Form />
+        </>
+      ) : (
+        <Welcome />
+      )}
 
       <span
         className={`${style.backdrop} ${
